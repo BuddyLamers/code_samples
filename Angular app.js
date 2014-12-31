@@ -1,5 +1,7 @@
-// This is a basic app.js from an angular app integrating with a rails backend.
-// Contains a router and adjustments to $httpProvider for Rails CSRF security
+// https://github.com/daniellacosse/achilles-shield
+// This is a basic app.js from an angular app.
+// Uses $routeProvider to integrate with a RESTful Rails backend
+// Contains adjustments to $httpProvider for Rails CSRF security
 
 (function(root) {
   root.achillesShield = angular.module('achillesShield', ['templates', 'ngRoute', 'ngResource']);
