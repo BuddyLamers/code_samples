@@ -1,0 +1,79 @@
+<!-- https://github.com/BuddyLamers/unisonserver
+  
+Uses jQuery to dynamically add inputs to a form. 
+Also uses Rails helper methods and embedded ruby to produce <option> tags.
+Because ERB is evaluated to a string first, I was able to use ERB to have rails create an HTML-safe string of <option> tags
+which I then inserted into my Jquery code.
+
+Styled with Bootstrap
+ -->
+
+<h1>New Breach</h1>
+<form action="<%= breaches_url %>" method="post">
+  <%= auth_token %>
+
+  <input type="hidden" name="breach[session_id]" value="<%= @session.id %>">
+
+  <label>Code Type
+    <select class="code-type" name="breach[code_type_id]">
+      <%= options_from_collection_with_id(CodeType.all) %>
+    </select>
+  </label> 
+
+Breacher:
+    <select class="breacher" name="breach[person_ids][]">
+      <%= options_from_collection_with_id(@session.people) %>
+    </select>
+
+
+First Contribution:
+    <input class="contribution" name="breach[contributions][]">
+
+  <h4>Additional Contributions</h4>
+    <div class="input_fields_wrap">
+      <button class="add_field_button btn btn-primary btn-primary">Add Another Blank</button>
+      <br>
+      <div>
+            <select name="breach[person_ids][]">
+              <%= options_from_collection_with_id(@session.people) %>
+            </select>
+            <input type="text" name="breach[contributions][]">
+      </div>
+    </div>
+
+  
+  <h4 class="select-codes">Select Specific Codes</h4>
+  <ul>
+  <% @session.subject.codes.each do |code| %>
+    <%= render partial: "codes/checkbox", locals: {code: code} %>
+  <% end %>
+  </ul>
+
+  <label>
+  <input type="submit" class="close-breach btn btn-lg btn-success" value="Close the Breach">
+  </label>
+</form>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var max_fields      = 42; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+    
+    
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append("<div><select name='breach[person_ids][]'><%= options_from_collection_with_id(@session.people) %></select> <input type='text' name='breach[contributions][]'/><a href='#'' class='remove_field'>Remove</a></div>"); //add input box
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
