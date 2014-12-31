@@ -1,0 +1,269 @@
+/* https://github.com/BuddyLamers/MoonDrakeStudio
+ * This is some simple, hand-written CSS I did which emphasizes cross-browser compatibility
+ *
+ *= require_self
+ *= require_tree .
+ */
+/*
+
+
+ @import "fonts";
+ $quito_font: 'Quito';*/
+
+* {
+  font: inherit;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  }
+
+body {
+  background-image: -webkit-linear-gradient(left, #050505 0%, #BC16EF 81%);
+  color: #ebdff2;
+  }
+
+
+button {
+   border-top: 1px solid #c246ab;
+   background: #093c69;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ba54b3), to(#093c69));
+   background: -webkit-linear-gradient(top, #ba54b3, #093c69);
+   background: -moz-linear-gradient(top, #ba54b3, #093c69);
+   background: -ms-linear-gradient(top, #ba54b3, #093c69);
+   background: -o-linear-gradient(top, #ba54b3, #093c69);
+   padding: 9.5px 19px;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   border-radius: 10px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #ebdff2;
+   font-size: 16px;
+   font-family: Georgia, Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #823777;
+   background: #823777;
+   color: #ccc;
+   }
+button:active {
+   border-top-color: #f07ac7;
+   background: #f07ac7;
+   }
+
+h1 {
+  margin: 30px;
+  font-weight: bold;
+  font-size: 60px;
+  text-align: center;
+  font-family: 'Quito' !important;
+  display: block;
+}
+
+p {
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+a {
+  color: #ebdff2;
+}
+
+.group {
+  clear: both;
+  content: " ";
+  display: block;
+}
+
+#backbone-sidebar {
+  float: right;
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 11%;
+}
+
+#backbone-sidebar > div {
+  height: 100%;
+}
+
+#backbone-content {
+  float: left;
+  display: block;
+  height: 100%;
+  width: 89%;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+}
+
+.modal.is-active {
+  display: block;
+}
+
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: #fff;
+
+  margin-left: -230px;
+  margin-top: -250px;
+
+  padding: 30px;
+  width: 400px;
+  min-height: 200px;
+  z-index: 1000;
+
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  color: purple;
+  opacity: .89;
+}
+
+.picture-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  background: black;
+  margin-left: -270px;
+  margin-top: -300px;
+  width: 640px;
+  z-index: 1000;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+.modal-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+.modal-x {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-x:hover {
+  color: #000;
+}
+
+.link {
+  
+  margin: 1px;
+}
+
+.link-list {
+  margin-top: 150px;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
+  background-image: -webkit-linear-gradient(top left, #000000 0%, #E609BD 100%);
+  border-radius: 10px;
+}
+
+.link-list > li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  list-style: none;
+}
+
+.link-list a {
+  margin-top: 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.instagram-photo {
+  width: 24%;
+  margin: 2px;
+  border: 1px solid black;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.9);
+  border-radius: 10px;
+}
+
+.instagram-photo:hover {
+ border: 1px solid pink;
+}
+
+.instagram-photo-fullsize {
+  border-radius: 50px;
+  position: absolute;
+  display: block;
+  width: 640px;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.3);
+}
+
+.page-buttons {
+  margin-left: 15%;
+}
+
+.page-buttons li {
+  width: 20%;
+  float: left;
+  margin: 5%;
+  list-style: none;
+}
+
+
+
+.selected-link {
+  background: purple;
+  border-radius: 5px;
+}
+
+.selected-link > a {
+  color: black;
+  font-weight: bolder;
+}
+
+.main > img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.google-calendar {
+  margin: auto;
+  width: 80%;
+  height: 450px;
+  margin-left: 100px;
+}
+
+
+.social-link {
+  width: 25px;
+  height: 25px;
+}
+
+.modal-social-link {
+  color: lightblue;
+  font-weight: bold;
+}
+
+.root-main {
+  background: url("http://38.media.tumblr.com/0024956bc4c1e8d86dfbb92b4430317b/tumblr_n4fx32lrDp1tzf5ueo1_1280.jpg");
+}
