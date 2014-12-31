@@ -1,0 +1,62 @@
+<!--https://github.com/BuddyLamers/unisonserver/ 
+This is some short code (mostly HTML, but meant to show off jQuery / ERB
+Because i could not properly use an <a> tag in a tr without bugginess, I gave tr tags a class of "clickableRow" and an href attribute.
+jQuery uses that href to change the url.
+
+Basic table styled with bootstrap.
+ -->
+
+<% @title = "Conferences" %>
+<h1>Your Conferences</h1>
+
+<% if current_person.class == Teacher %>
+  <div class="commands">
+    <%= link_to "Schedule a New Conference", new_conference_path %> &middot;
+  </div>
+<% end %>
+
+<% if @conferences.any? %>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+    <th>Teacher</th>
+    <th>Student</th>
+    <th>Subject</th>
+    <th>Time</th>
+    <th>Notes</th>
+    <th>Completed?</th>
+    <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @conferences %>
+    <!-- partial shown here for reference 
+    <tr class="clickableRow" href="<%= conference_url(conference) %>">
+      <td><%= conference.teacher.name  %></td>
+      <td><%= conference.student.name %></td>
+      <td class="note-subject"><%= conference.subject.name %></td>
+      <td><%= human_time_full_datetime(conference.time) %></td>
+      <td><%= conference.notes %></td>
+      <td>
+        <% if conference.is_completed? %>
+        &#x2713;
+        <% end %>
+      </td>
+      <td><%=  link_to 'Delete', conference_path(conference),
+      :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger" %></td>
+    </tr>
+    End insterted partial -->
+</tbody>
+
+</table>
+
+<% end %>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+      $(".clickableRow").click(function() {
+            window.document.location = $(this).attr("href");
+      });
+});
+</script>
